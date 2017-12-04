@@ -1,0 +1,22 @@
+//Counting Array Elements:
+https://www.codewars.com/kata/5569b10074fe4a6715000054
+
+
+//Problem
+Write a function that takes an array and counts the number of each unique element present.
+
+count(['james', 'james', 'john']) 
+#=> { 'james' => 2, 'john' => 1}
+
+
+//My Solution
+def count(array)
+  count = Hash.new(0)
+  array.each { |name| count[name] += 1 }
+  return count
+end
+
+
+//Working
+I started by creating a hash called count.
+I then iterated through the array, adding 1 to the hash for each element of the name that exists in the original array.
