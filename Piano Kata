@@ -1,0 +1,30 @@
+//Piano Kata, Part 1:
+https://www.codewars.com/kata/589273272fab865136000108
+
+
+//Problem
+Your Function
+
+The function you are going to write is not actually going to help you with your piano playing, but just explore one of the patterns you're experiencing: Given the number you stopped on, was it on a black key or a white key? For example, in the description of your piano exercise above, if you stopped at 5, your left thumb would be on the fifth key of the piano, which is black. Or if you stopped at 92, you would have gone all the way from keys 1 to 88 and then wrapped around, so that you would be on the fourth key, which is white.
+
+Your function will receive an integer between 1 and 10000 (maybe you think that in principle it would be cool to count up to, say, a billion, but considering how many years it would take it is just not possible) and return the string "black" or "white" -- here are a few more examples:
+
+1     "white"
+12    "black"
+42    "white"
+100   "black"
+2017  "white"
+
+//My Solution
+def black_or_white_key(key_press_count)
+  sequenceInit = ["white", "black", "white", "white"]
+  sequenceRepeat = ["black", "white", "black", "white", "white", "black", "white", "black", "white", "black", "white", "white"]
+  pianoKeys = [sequenceInit, sequenceRepeat*7].flatten
+  return pianoKeys[key_press_count - ((key_press_count/88.floor)*88) - 1]
+end
+
+
+//Working
+My initial thought was to manually write out an array of all 88 keys on the piano. However, I noted that outside of the initial 4 keys, the rest were a pattern of 12 keys that repeated 7 times.
+As such, I built an array of these 2 sequences and then merged and flattened them into a long array of pianoKeys which contains all of the keys in the 88.
+Once I had this, I simply needed to determine where in the sequence of the 88 keys the number fell and return the result for that item.
